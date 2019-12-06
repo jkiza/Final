@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-11-21T17:28:39+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-06T14:03:16+00:00
+# @Last modified time: 2019-12-06T16:03:49+00:00
 
 
 
@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Role;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;

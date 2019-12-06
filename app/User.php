@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-11-21T17:28:39+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-06T14:01:09+00:00
+# @Last modified time: 2019-12-06T17:30:29+00:00
 
 
 
@@ -43,6 +43,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function doctor()
+    {
+      return $this->hasOne('App\Doctor');
+    }
+
+    public function patient()
+    {
+      return $this->hasOne('App\Patient');
+    }
 
     public function roles()
     {
