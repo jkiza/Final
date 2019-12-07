@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:23:43+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-07T15:26:27+00:00
+# @Last modified time: 2019-12-07T16:56:36+00:00
 
 
 
@@ -17,6 +17,12 @@ use App\Doctor;
 
 class VisitController extends Controller
 {
+
+    public function __construct()
+    {
+      $this->middleware('auth');
+      $this->middleware('role:admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -107,7 +113,27 @@ class VisitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $visit = Visit::findOrFail($id);
+
+      $request->validate([
+        'date' => 'required|date',
+        'time' => 'required|time',
+        'duration' => 'required|max:191',
+        'cost' => 'required|max:191',
+        'doctor_id' => 'required|max:191',
+        'patient_id' => 'required|max:191'
+      ]);
+
+      $visit = new Visit();
+      $visit->date = $request->input('date');
+      $visit->time = $request->input('time');
+      $visit->duration = $request->input('duration');
+      $visit->cost = $request->input('cost');
+      $visit->doctor_id = $request->input('doctor_id');
+      $visit->patient_id = $request->input('patient_id');
+      $visit->save();
+
+      return redirect()->route('admin.visits.index');
     }
 
     /**

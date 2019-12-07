@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:23:24+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-07T15:25:16+00:00
+# @Last modified time: 2019-12-07T16:55:52+00:00
 
 
 
@@ -15,6 +15,12 @@ use App\Doctor;
 
 class DoctorController extends Controller
 {
+
+    public function __construct()
+    {
+      $this->middleware('auth');
+      $this->middleware('role:admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -101,7 +107,24 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $doctor = Doctor::findOrFail($id);
+
+        $request->validate([
+          'address' => 'required|max:191',
+          'phone' => 'required|max:191',
+          'start' => 'required|date',
+          'user_id' => 'required|max:191'
+        ]);
+
+        $doctor = new Doctor();
+        $doctor->address = $request->input('address');
+        $doctor->phone = $request->input('phone');
+        $doctor->start = $request->input('start');
+        $doctor->user_id = $request->input('user_id');
+        $doctor->save();
+
+        return redirect()->route('admin.doctors.index');
+
     }
 
     /**
