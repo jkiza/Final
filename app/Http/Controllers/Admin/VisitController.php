@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:23:43+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-06T22:06:44+00:00
+# @Last modified time: 2019-12-07T15:26:27+00:00
 
 
 
@@ -78,7 +78,10 @@ class VisitController extends Controller
      */
     public function show($id)
     {
-        //
+      $visit = Visit::findOrFail($id);
+      return view('admin.visits.show')->with([
+        'visit' => $visit
+      ]);
     }
 
     /**
@@ -89,7 +92,10 @@ class VisitController extends Controller
      */
     public function edit($id)
     {
-        //
+      $visit = Visit::findOrFail($id);
+      return view('admin.visits.edit')->with([
+        'visit' => $visit
+      ]);
     }
 
     /**
@@ -112,6 +118,8 @@ class VisitController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $visit = Visit::findOrFail($id);
+      $visit->delete();
+      return redirect()->route('admin.visits.index');
     }
 }

@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:23:24+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-06T21:15:40+00:00
+# @Last modified time: 2019-12-07T15:25:16+00:00
 
 
 
@@ -72,7 +72,10 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        //
+        $doctor = Doctor::findOrFail($id);
+        return view('admin.doctors.show')->with([
+          'doctor' => $doctor
+        ]);
     }
 
     /**
@@ -83,7 +86,10 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        //
+      $doctor = Doctor::findOrFail($id);
+      return view('admin.doctors.edit')->with([
+        'doctor' => $doctor
+      ]);
     }
 
     /**
@@ -106,6 +112,8 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $doctor = Doctor::findOrFail($id);
+      $doctor->delete();
+      return redirect()->route('admin.doctors.index');
     }
 }
