@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-07T17:07:48+00:00
+# @Last modified time: 2019-12-09T10:53:48+00:00
 
 
 @section('content')
@@ -22,7 +22,7 @@
                     </div>
                     @endif
                     <form method="POST" action="{{ route('admin.patients.store') }}">
-                      <input type="hidden" name="_token" value="{{ 'csrf_token()' }}">
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
                         <label for="address">Address</label>
                         <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}"/>

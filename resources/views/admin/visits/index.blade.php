@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-06T21:51:51+00:00
+# @Last modified time: 2019-12-09T10:56:16+00:00
 
 
 @section('content')
@@ -40,7 +40,7 @@
                           <a href="{{ route('admin.visits.edit', $visit->id) }}" class="btn btn-warning">Edit</a>
                           <form style="display:inline-block" method="POST" action="{{ route('admin.visits.destroy', $visit->id) }}">
                             <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="_token" value="{{ 'csfr_token()' }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <button type="submit" class="form-control btn btn-danger">Delete</>
                           </form>
                         </td>

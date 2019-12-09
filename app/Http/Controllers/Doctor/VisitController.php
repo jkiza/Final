@@ -1,4 +1,11 @@
 <?php
+# @Author: izzy
+# @Date:   2019-12-06T20:24:15+00:00
+# @Last modified by:   izzy
+# @Last modified time: 2019-12-09T11:56:12+00:00
+
+
+
 
 namespace App\Http\Controllers\Doctor;
 
@@ -7,6 +14,11 @@ use Illuminate\Http\Request;
 
 class VisitController extends Controller
 {
+
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,28 +26,11 @@ class VisitController extends Controller
      */
     public function index()
     {
-        //
-    }
+      $visits = Visit::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+      return view('doctor.visits.index')->with([
+        'visits' => $visits
+      ]);
     }
 
     /**
@@ -46,40 +41,10 @@ class VisitController extends Controller
      */
     public function show($id)
     {
-        //
+      $visit = Visit::findOrFail($id);
+      return view('doctor.visits.show')->with([
+        'visit' => $visit
+      ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

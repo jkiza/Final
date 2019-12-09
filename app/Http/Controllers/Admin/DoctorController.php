@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:23:24+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-07T16:55:52+00:00
+# @Last modified time: 2019-12-09T11:41:14+00:00
 
 
 
@@ -55,9 +55,9 @@ class DoctorController extends Controller
     {
         $request->validate([
           'address' => 'required|max:191',
-          'phone' => 'required|max:191',
+          'phone' => 'required|alpha_num',
           'start' => 'required|date',
-          'user_id' => 'required|max:191'
+          'user_id' => 'required'
         ]);
 
         $doctor = new Doctor();
@@ -111,16 +111,16 @@ class DoctorController extends Controller
 
         $request->validate([
           'address' => 'required|max:191',
-          'phone' => 'required|max:191',
+          'phone' => 'required|alpha_num',
           'start' => 'required|date',
-          'user_id' => 'required|max:191'
+          'user_id' => 'required'
         ]);
 
-        $doctor = new Doctor();
         $doctor->address = $request->input('address');
         $doctor->phone = $request->input('phone');
         $doctor->start = $request->input('start');
         $doctor->user_id = $request->input('user_id');
+
         $doctor->save();
 
         return redirect()->route('admin.doctors.index');

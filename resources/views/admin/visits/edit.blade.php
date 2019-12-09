@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-07T17:13:46+00:00
+# @Last modified time: 2019-12-09T10:56:21+00:00
 
 
 @section('content')
@@ -23,7 +23,7 @@
                     @endif
                     <form method="POST" action="{{ route('admin.visits.update', $visit->id) }}">
                       <input type="hidden" name="_method" value="PUT">
-                      <input type="hidden" name="_token" value="{{ 'csrf_token()' }}">
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
                         <label for="date">Date</label>
                         <input type="text" class="form-control" id="date" name="date" value="{{ old('date', $visit->date) }}"/>

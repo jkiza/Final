@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:23:33+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-07T16:56:23+00:00
+# @Last modified time: 2019-12-09T11:41:47+00:00
 
 
 
@@ -57,11 +57,11 @@ class PatientController extends Controller
     {
       $request->validate([
         'address' => 'required|max:191',
-        'phone' => 'required|max:191',
-        'insurance' => 'required|date',
+        'phone' => 'required|alpha_num',
+        'insurance' => 'required|max:191',
         'company' => 'max:191',
         'policy' => 'max:191',
-        'user_id' => 'required|max:191'
+        'user_id' => 'required'
       ]);
 
       $patient = new Patient();
@@ -118,14 +118,13 @@ class PatientController extends Controller
 
       $request->validate([
         'address' => 'required|max:191',
-        'phone' => 'required|max:191',
-        'insurance' => 'required|date',
+        'phone' => 'required|alpha_num',
+        'insurance' => 'required|max:191',
         'company' => 'max:191',
         'policy' => 'max:191',
-        'user_id' => 'required|max:191'
+        'user_id' => 'required'
       ]);
 
-      $patient = new Patient();
       $patient->address = $request->input('address');
       $patient->phone = $request->input('phone');
       $patient->insurance = $request->input('insurance');

@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:23:43+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-07T16:56:36+00:00
+# @Last modified time: 2019-12-09T11:41:57+00:00
 
 
 
@@ -57,9 +57,9 @@ class VisitController extends Controller
     {
       $request->validate([
         'date' => 'required|date',
-        'time' => 'required|time',
-        'duration' => 'required|max:191',
-        'cost' => 'required|max:191',
+        'time' => 'required',
+        'duration' => 'required|numeric|min:0',
+        'cost' => 'required|numeric|min:0',
         'doctor_id' => 'required|max:191',
         'patient_id' => 'required|max:191'
       ]);
@@ -115,16 +115,16 @@ class VisitController extends Controller
     {
       $visit = Visit::findOrFail($id);
 
+
       $request->validate([
         'date' => 'required|date',
-        'time' => 'required|time',
-        'duration' => 'required|max:191',
-        'cost' => 'required|max:191',
+        'time' => 'required',
+        'duration' => 'required|numeric|min:0',
+        'cost' => 'required|numeric|min:0',
         'doctor_id' => 'required|max:191',
         'patient_id' => 'required|max:191'
       ]);
 
-      $visit = new Visit();
       $visit->date = $request->input('date');
       $visit->time = $request->input('time');
       $visit->duration = $request->input('duration');
