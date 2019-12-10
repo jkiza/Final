@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-09T10:56:40+00:00
+# @Last modified time: 2019-12-10T11:29:05+00:00
 
 
 @section('content')
@@ -19,22 +19,24 @@
                   @else
                   <table id="table-patients" class="table table-hover">
                     <thead>
+                      <th>Name</th>
+                      <th>E-mail</th>
                       <th>Address</th>
                       <th>Phone number</th>
                       <th>Insurance</th>
                       <th>Company</th>
                       <th>Policy</th>
-                      <th>User ID</th>
                     </thead>
                     <tbody>
                       @foreach ($patients as $patient)
                       <tr data id="{{ $patient->id }}">
+                        <td>{{ $patient->user->name }}</td>
+                        <td>{{ $patient->user->email }}</td>
                         <td>{{ $patient->address }}</td>
                         <td>{{ $patient->phone }}</td>
                         <td>{{ $patient->insurance }}</td>
                         <td>{{ $patient->company }}</td>
                         <td>{{ $patient->policy }}</td>
-                        <td>{{ $patient->user_id }}</td>
                         <td>
                           <a href="{{ route('admin.patients.show', $patient->id) }}" class="btn btn-default">View</a>
                           <a href="{{ route('admin.patients.edit', $patient->id) }}" class="btn btn-warning">Edit</a>

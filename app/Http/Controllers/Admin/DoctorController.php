@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:23:24+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-09T11:41:14+00:00
+# @Last modified time: 2019-12-10T11:53:43+00:00
 
 
 
@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
 use App\Doctor;
 
 class DoctorController extends Controller
@@ -54,18 +55,24 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+          'name' => 'required|max:191',
+          'email' => 'required|email|max:191',
           'address' => 'required|max:191',
           'phone' => 'required|alpha_num',
-          'start' => 'required|date',
-          'user_id' => 'required'
+          'start' => 'required|date'
         ]);
 
         $doctor = new Doctor();
         $doctor->address = $request->input('address');
         $doctor->phone = $request->input('phone');
         $doctor->start = $request->input('start');
-        $doctor->user_id = $request->input('user_id');
+        $doctor->user_id = 4;
         $doctor->save();
+
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->save();
 
         return redirect()->route('admin.doctors.index');
     }

@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-09T10:57:00+00:00
+# @Last modified time: 2019-12-10T11:21:24+00:00
 
 
 @section('content')
@@ -19,18 +19,20 @@
                   @else
                   <table id="table-doctors" class="table table-hover">
                     <thead>
+                      <th>Name</th>
+                      <th>E-mail</th>
                       <th>Address</th>
                       <th>Phone number</th>
                       <th>Start date</th>
-                      <th>User ID</th>
                     </thead>
                     <tbody>
                       @foreach ($doctors as $doctor)
                       <tr data id="{{ $doctor->id }}">
+                        <td>{{ $doctor->user->name }}</td>
+                        <td>{{ $doctor->user->email }}</td>
                         <td>{{ $doctor->address }}</td>
                         <td>{{ $doctor->phone }}</td>
                         <td>{{ $doctor->start }}</td>
-                        <td>{{ $doctor->user_id }}</td>
                         <td>
                           <a href="{{ route('admin.doctors.show', $doctor->id) }}" class="btn btn-default">View</a>
                           <a href="{{ route('admin.doctors.edit', $doctor->id) }}" class="btn btn-warning">Edit</a>

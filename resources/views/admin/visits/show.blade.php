@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-09T10:56:10+00:00
+# @Last modified time: 2019-12-10T11:41:15+00:00
 
 
 @section('content')
@@ -16,6 +16,14 @@
                 <div class="card-body">
                   <table id="table-visits" class="table table-hover">
                     <tbody>
+                      <tr>
+                        <td>Doctor</td>
+                        <td>{{ $visit->doctor_id }}</td>
+                      </tr>
+                      <tr>
+                        <td>Patient</td>
+                        <td>{{ $visit->patient_id }}</td>
+                      </tr>
                       <tr>
                         <td>Date</td>
                         <td>{{ $visit->date }}</td>
@@ -32,14 +40,7 @@
                         <td>Cost</td>
                         <td>{{ $visit->cost }}</td>
                       </tr>
-                      <tr>
-                        <td>Doctor ID</td>
-                        <td>{{ $visit->doctor_id }}</td>
-                      </tr>
-                      <tr>
-                        <td>Patient ID</td>
-                        <td>{{ $visit->patient_id }}</td>
-                      </tr>
+
                     </tbody>
                   </table>
                   <a href="{{ route('admin.visits.index') }}" class="btn btn-default">Back</a>

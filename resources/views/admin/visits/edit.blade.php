@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-09T10:56:21+00:00
+# @Last modified time: 2019-12-10T11:41:51+00:00
 
 
 @section('content')
@@ -25,6 +25,14 @@
                       <input type="hidden" name="_method" value="PUT">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
+                        <label for="doctor_id">Doctor</label>
+                        <input type="text" class="form-control" id="doctor_id" name="doctor_id" value="{{ old('doctor_id', $visit->doctor_id) }}"/>
+                      </div>
+                      <div class="form-group">
+                        <label for="patient_id">Patient</label>
+                        <input type="text" class="form-control" id="patient_id" name="patient_id" value="{{ old('patient_id', $visit->patient_id) }}"/>
+                      </div>
+                      <div class="form-group">
                         <label for="date">Date</label>
                         <input type="text" class="form-control" id="date" name="date" value="{{ old('date', $visit->date) }}"/>
                       </div>
@@ -40,16 +48,8 @@
                         <label for="cost">Cost</label>
                         <input type="text" class="form-control" id="cost" name="cost" value="{{ old('cost', $visit->cost) }}"/>
                       </div>
-                      <div class="form-group">
-                        <label for="doctor_id">Doctor ID</label>
-                        <input type="text" class="form-control" id="doctor_id" name="doctor_id" value="{{ old('doctor_id', $visit->doctor_id) }}"/>
-                      </div>
-                      <div class="form-group">
-                        <label for="patient_id">Patient ID</label>
-                        <input type="text" class="form-control" id="patient_id" name="patient_id" value="{{ old('patient_id', $visit->patient_id) }}"/>
-                      </div>
                       <a href="{{ route('admin.visits.index') }}" class="btn btn-link">Cancel</a>
-                      <button type="submit" class="btn btn-primary float-right">Submit</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>

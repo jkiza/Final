@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-09T10:56:33+00:00
+# @Last modified time: 2019-12-10T11:29:30+00:00
 
 
 @section('content')
@@ -16,6 +16,14 @@
                 <div class="card-body">
                   <table id="table-patients" class="table table-hover">
                     <tbody>
+                      <tr>
+                        <td>Name</td>
+                        <td>{{ $patient->user->name }}</td>
+                      </tr>
+                      <tr>
+                        <td>E-mail</td>
+                        <td>{{ $patient->user->email }}</td>
+                      </tr>
                       <tr>
                         <td>Address</td>
                         <td>{{ $patient->address }}</td>

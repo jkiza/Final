@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-09T10:56:54+00:00
+# @Last modified time: 2019-12-10T11:22:18+00:00
 
 
 @section('content')
@@ -17,6 +17,14 @@
                   <table id="table-doctors" class="table table-hover">
                     <tbody>
                       <tr>
+                        <td>Name</td>
+                        <td>{{ $doctor->user->name }}</td>
+                      </tr>
+                      <tr>
+                        <td>E-mail</td>
+                        <td>{{ $doctor->user->email }}</td>
+                      </tr>
+                      <tr>
                         <td>Address</td>
                         <td>{{ $doctor->address }}</td>
                       </tr>
@@ -27,10 +35,6 @@
                       <tr>
                         <td>Start date</td>
                         <td>{{ $doctor->start }}</td>
-                      </tr>
-                      <tr>
-                        <td>User ID</td>
-                        <td>{{ $doctor->user_id }}</td>
                       </tr>
                     </tbody>
                   </table>
