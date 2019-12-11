@@ -20,7 +20,32 @@
                         </div>
                     @endif
 
-                    Welcome, {{ Auth::user()->name }}. You're logged in as a patient.
+                    <table id="table-books" >
+                    <tr>
+                            <td>Name:  </td>
+                            <td>{{$patient->user->name}}</td>
+                            </tr>
+                            <td>Address 1:  </td>
+                            <td>{{$patient->address}}</td>
+                            </tr>
+                            <tr>
+                            <td>Phone Number:  </td>
+                            <td>{{$patient->phone}}</td>
+                            </tr>
+                            <td>Insurance:  </td>
+                            <td>{{$patient->insurnace}}</td>
+                            </tr>
+                            <td>Company:  </td>
+                            <td>{{$patient->company}}</td>
+                            </tr>
+                            <td>Policy:  </td>
+                            <td>{{$patient->policy}}</td>
+                            </tr>
+                            <tr>
+                            <td>Email:  </td>
+                            <td>{{$patient->user->email}}</td>
+                            </tr>
+                    </tr>
                 </div>
             </div>
         </div>

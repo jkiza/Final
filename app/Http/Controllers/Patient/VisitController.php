@@ -4,9 +4,16 @@ namespace App\Http\Controllers\Patient;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Visit;
+use App\Patient;
+use App\Doctor;
 class VisitController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:patient');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,15 @@ class VisitController extends Controller
      */
     public function index()
     {
-        //
+        
+        $visits = Visit::all();
+        $doctors = Doctor::all();
+        $patient = Patient::all();
+        return view('patient.visits.index')->with([
+          'visits' => $visits,
+          'doctors' => $doctors,
+          'patients' => $patient
+        ]);    
     }
 
     /**

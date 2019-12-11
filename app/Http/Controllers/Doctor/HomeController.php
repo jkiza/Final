@@ -11,7 +11,9 @@ namespace App\Http\Controllers\Doctor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\User;
+use App\Doctor;
+use Auth;
 class HomeController extends Controller
 {
 
@@ -23,6 +25,11 @@ class HomeController extends Controller
 
     public function index()
     {
-      return view('doctor.home');
+      $user = User::findOrFail(Auth::id());
+      $doctor = Doctor::findOrFail($user->doctor->id);
+
+      return view('doctor.home')->with([
+        'doctor' => $doctor
+      ]);
     }
 }

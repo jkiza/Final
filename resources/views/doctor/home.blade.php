@@ -20,8 +20,24 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    Welcome, {{ Auth::user()->name }}. You're logged in as a doctor.
+                    <table id="table-books" >
+                    <tr>
+                            <td>Address 1:  </td>
+                            <td>{{$doctor->address}}</td>
+                            </tr>
+                            <tr>
+                            <tr>
+                            <td>Phone Number:  </td>
+                            <td>{{$doctor->phone}}</td>
+                            </tr>
+                            <tr>
+                            <td>Email:  </td>
+                            <td>{{$doctor->user->email}}</td>
+                            </tr>
+                            <tr>
+                            <td>Start Date:  </td>
+                            <td>{{$doctor->start}}</td>
+                            </tr>
                 </div>
             </div>
         </div>

@@ -11,8 +11,8 @@ use Illuminate\Database\Seeder;
 use App\Visit;
 use App\Patient;
 use App\Doctor;
-
-class VisitsTableSeeder extends Seeder
+use App\Role;
+class VisitTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,16 +21,24 @@ class VisitsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        $role_patient = Role::where('name', 'patient')->first();
+        $role_doctor = Role::where('name', 'doctor')->first();
+        $doctors = $role_doctor->users;
+
+        foreach($role_patient->users as $user) {
+
         $visit = new Visit();
+        $doctor = $doctors[rand(0, count($doctors) -1)];
 
         $visit->date = "2019-12-20";
         $visit->time = "12:20:00";
         $visit->duration = 45;
         $visit->cost = 125.00;
-        $visit->doctor_id = $doctor->id;
-        $visit->patient_id = $patient->id;
+        $visit->doctor_id = $doctor->doctor->id;
+        $visit->patient_id = $user->patient->id;
         $visit->save();
+
+    }
 
     }
 }
