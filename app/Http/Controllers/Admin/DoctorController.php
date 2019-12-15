@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:23:24+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-10T11:53:43+00:00
+# @Last modified time: 2019-12-15T20:48:14+00:00
 
 
 
@@ -55,24 +55,18 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-          'name' => 'required|max:191',
-          'email' => 'required|email|max:191',
+          'user_id' => 'required|alpha_num|max:3',
           'address' => 'required|max:191',
-          'phone' => 'required|alpha_num',
+          'phone' => 'required|min:6|max:13',
           'start' => 'required|date'
         ]);
 
         $doctor = new Doctor();
+        $doctor->user_id = $request->input('user_id');
         $doctor->address = $request->input('address');
         $doctor->phone = $request->input('phone');
         $doctor->start = $request->input('start');
-        $doctor->user_id = 4;
         $doctor->save();
-
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->save();
 
         return redirect()->route('admin.doctors.index');
     }
@@ -117,16 +111,16 @@ class DoctorController extends Controller
         $doctor = Doctor::findOrFail($id);
 
         $request->validate([
+          'user_id' => 'required|alpha_num|max:3',
           'address' => 'required|max:191',
-          'phone' => 'required|alpha_num',
-          'start' => 'required|date',
-          'user_id' => 'required'
+          'phone' => 'required|min:6|max:13',
+          'start' => 'required|date'
         ]);
 
+        $doctor->user_id = $request->input('user_id');
         $doctor->address = $request->input('address');
         $doctor->phone = $request->input('phone');
         $doctor->start = $request->input('start');
-        $doctor->user_id = $request->input('user_id');
 
         $doctor->save();
 

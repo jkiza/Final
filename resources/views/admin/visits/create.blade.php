@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-10T11:33:52+00:00
+# @Last modified time: 2019-12-15T21:10:20+00:00
 
 
 @section('content')
@@ -24,11 +24,11 @@
                     <form method="POST" action="{{ route('admin.visits.store') }}">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
-                        <label for="doctor_id">Doctor</label>
+                        <label for="doctor_id">Doctor ID</label>
                         <input type="text" class="form-control" id="doctor_id" name="doctor_id" value="{{ old('doctor_id') }}"/>
                       </div>
                       <div class="form-group">
-                        <label for="patient_id">Patient</label>
+                        <label for="patient_id">Patient ID</label>
                         <input type="text" class="form-control" id="patient_id" name="patient_id" value="{{ old('patient_id') }}"/>
                       </div>
                       <div class="form-group">

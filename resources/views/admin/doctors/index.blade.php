@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-10T11:21:24+00:00
+# @Last modified time: 2019-12-15T20:50:54+00:00
 
 
 @section('content')
@@ -19,6 +19,7 @@
                   @else
                   <table id="table-doctors" class="table table-hover">
                     <thead>
+                      <th>User ID</th>
                       <th>Name</th>
                       <th>E-mail</th>
                       <th>Address</th>
@@ -28,6 +29,7 @@
                     <tbody>
                       @foreach ($doctors as $doctor)
                       <tr data id="{{ $doctor->id }}">
+                        <td>{{ $doctor->user_id }}</td>
                         <td>{{ $doctor->user->name }}</td>
                         <td>{{ $doctor->user->email }}</td>
                         <td>{{ $doctor->address }}</td>

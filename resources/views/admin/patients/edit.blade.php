@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-10T11:30:31+00:00
+# @Last modified time: 2019-12-15T21:09:18+00:00
 
 
 @section('content')
@@ -25,12 +25,8 @@
                       <input type="hidden" name="_method" value="PUT">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $patient->user->name) }}"/>
-                      </div>
-                      <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $patient->user->email) }}"/>
+                        <label for="user_id">User ID</label>
+                        <input type="text" class="form-control" id="user_id" name="user_id" value="{{ old('user_id', $patient->user_id) }}"/>
                       </div>
                       <div class="form-group">
                         <label for="address">Address</label>

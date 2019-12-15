@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-10T11:41:25+00:00
+# @Last modified time: 2019-12-15T21:23:06+00:00
 
 
 @section('content')
@@ -30,7 +30,9 @@
                       @foreach ($visits as $visit)
                       <tr data id="{{ $visit->id }}">
                         <td>{{ $visit->doctor_id }}</td>
+
                         <td>{{ $visit->patient_id }}</td>
+                        
                         <td>{{ $visit->date }}</td>
                         <td>{{ $visit->time }}</td>
                         <td>{{ $visit->duration }}</td>

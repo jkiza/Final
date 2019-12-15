@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T14:08:59+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-06T19:28:06+00:00
+# @Last modified time: 2019-12-15T21:46:25+00:00
 
 
 
@@ -20,32 +20,25 @@
                         </div>
                     @endif
 
-                    <table id="table-books" >
-                    <tr>
-                            <td>Name:  </td>
-                            <td>{{$patient->user->name}}</td>
-                            </tr>
-                            <td>Address 1:  </td>
-                            <td>{{$patient->address}}</td>
-                            </tr>
-                            <tr>
-                            <td>Phone Number:  </td>
-                            <td>{{$patient->phone}}</td>
-                            </tr>
-                            <td>Insurance:  </td>
-                            <td>{{$patient->insurnace}}</td>
-                            </tr>
-                            <td>Company:  </td>
-                            <td>{{$patient->company}}</td>
-                            </tr>
-                            <td>Policy:  </td>
-                            <td>{{$patient->policy}}</td>
-                            </tr>
-                            <tr>
-                            <td>Email:  </td>
-                            <td>{{$patient->user->email}}</td>
-                            </tr>
-                    </tr>
+                    Welcome, {{ Auth::user()->name }}. You're logged in as a patient.
+
+                    <table id="table-patientHome" class="table table-hover">
+                      <tbody>
+                        <br/>
+                        <tr>
+                          <td>E-mail:</td>
+                          <td>{{ $patient->user->email }}</td>
+                        </tr>
+                        <tr>
+                          <td>Address:</td>
+                          <td>{{ $patient->address }}</td>
+                        </tr>
+                        <tr>
+                          <td>Phone Number:</td>
+                          <td>{{ $patient->phone }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                 </div>
             </div>
         </div>

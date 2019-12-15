@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-10T11:41:15+00:00
+# @Last modified time: 2019-12-15T21:32:01+00:00
 
 
 @section('content')
@@ -19,10 +19,12 @@
                       <tr>
                         <td>Doctor</td>
                         <td>{{ $visit->doctor_id }}</td>
+
                       </tr>
                       <tr>
                         <td>Patient</td>
                         <td>{{ $visit->patient_id }}</td>
+                        
                       </tr>
                       <tr>
                         <td>Date</td>

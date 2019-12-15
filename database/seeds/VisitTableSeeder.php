@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T17:32:06+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-06T20:18:22+00:00
+# @Last modified time: 2019-12-15T20:55:30+00:00
 
 
 
@@ -38,7 +38,7 @@ class VisitTableSeeder extends Seeder
         $visit->patient_id = $user->patient->id;
         $visit->save();
 
-    }
+      }
 
     }
 }

@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:23:33+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-09T11:41:47+00:00
+# @Last modified time: 2019-12-15T21:17:19+00:00
 
 
 
@@ -11,9 +11,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Visit;
+use App\User;
 use App\Patient;
-use App\Doctor;
 
 class PatientController extends Controller
 {
@@ -56,21 +55,21 @@ class PatientController extends Controller
     public function store(Request $request)
     {
       $request->validate([
+        'user_id' => 'required|alpha_num|max:3',
         'address' => 'required|max:191',
-        'phone' => 'required|alpha_num',
-        'insurance' => 'required|max:191',
+        'phone' => 'required|min:6|max:13',
+        'insurance' => 'required|alpha_num|max:1',
         'company' => 'max:191',
-        'policy' => 'max:191',
-        'user_id' => 'required'
+        'policy' => 'max:191'
       ]);
 
       $patient = new Patient();
+      $patient->user_id = $request->input('user_id');
       $patient->address = $request->input('address');
       $patient->phone = $request->input('phone');
       $patient->insurance = $request->input('insurance');
       $patient->company = $request->input('company');
       $patient->policy = $request->input('policy');
-      $patient->user_id = $request->input('user_id');
       $patient->save();
 
       return redirect()->route('admin.patients.index');
@@ -117,20 +116,20 @@ class PatientController extends Controller
       $patient = Patient::findOrFail($id);
 
       $request->validate([
+        'user_id' => 'required|alpha_num|max:3',
         'address' => 'required|max:191',
-        'phone' => 'required|alpha_num',
-        'insurance' => 'required|max:191',
+        'phone' => 'required|min:6|max:13',
+        'insurance' => 'required|alpha_num|max:1',
         'company' => 'max:191',
-        'policy' => 'max:191',
-        'user_id' => 'required'
+        'policy' => 'max:191'
       ]);
 
+      $patient->user_id = $request->input('user_id');
       $patient->address = $request->input('address');
       $patient->phone = $request->input('phone');
       $patient->insurance = $request->input('insurance');
       $patient->company = $request->input('company');
       $patient->policy = $request->input('policy');
-      $patient->user_id = $request->input('user_id');
       $patient->save();
 
       return redirect()->route('admin.patients.index');

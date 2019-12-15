@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:23:43+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-09T11:41:57+00:00
+# @Last modified time: 2019-12-15T21:19:57+00:00
 
 
 
@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
 use App\Visit;
 use App\Patient;
 use App\Doctor;
@@ -60,8 +61,8 @@ class VisitController extends Controller
         'time' => 'required',
         'duration' => 'required|numeric|min:0',
         'cost' => 'required|numeric|min:0',
-        'doctor_id' => 'required|max:191',
-        'patient_id' => 'required|max:191'
+        'doctor_id' => 'required|alpha_num|max:3',
+        'patient_id' => 'required|alpha_num|max:3'
       ]);
 
       $visit = new Visit();
@@ -121,8 +122,8 @@ class VisitController extends Controller
         'time' => 'required',
         'duration' => 'required|numeric|min:0',
         'cost' => 'required|numeric|min:0',
-        'doctor_id' => 'required|max:191',
-        'patient_id' => 'required|max:191'
+        'doctor_id' => 'required|alpha_num|max:3',
+        'patient_id' => 'required|alpha_num|max:3'
       ]);
 
       $visit->date = $request->input('date');

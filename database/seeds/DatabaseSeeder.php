@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-11-21T17:28:39+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-10T11:56:10+00:00
+# @Last modified time: 2019-12-15T20:54:52+00:00
 
 
 
@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(PatientsTableSeeder::class);
         $this->call(DoctorsTableSeeder::class);
-        $this->call(VisitTableSeeder::class);
+        //$this->call(VisitTableSeeder::class);
     }
 }

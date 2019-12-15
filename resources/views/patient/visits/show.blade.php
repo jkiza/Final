@@ -2,44 +2,50 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-15T22:01:04+00:00
+# @Last modified time: 2019-12-15T21:56:41+00:00
 
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-8 col-mid-offset-2">
             <div class="card">
+                <div class="card-header">
+                  {{ $visit->date }}
+                </div>
                 <div class="card-body">
-                  @if (count($visits) === 0)
-                  <p>There are no visits to display.</p>
-                  @else
                   <table id="table-visits" class="table table-hover">
-                    <thead>
-                      <th>Doctor</th>
-                      <th>Patient</th>
-                      <th>Date</th>
-                      <th>Time</th>
-                      <th>Duration</th>
-                      <th>Cost</th>
-                    </thead>
                     <tbody>
-                      @foreach ($visits as $visit)
-                      <tr data id="{{ $visit->id }}">
+                      <tr>
+                        <td>Doctor</td>
                         <td>{{ $visit->doctor_id }}</td>
-                        <td>{{ $visit->patient_id }}</td>
-                        <td>{{ $visit->date }}</td>
-                        <td>{{ $visit->time }}</td>
-                        <td>{{ $visit->duration }}</td>
-                        <td>{{ $visit->cost }}</td>
-                        <td>
-                          <a href="{{ route('patient.visits.show', $visit->id) }}" class="btn btn-default">View</a>
-                        </td>
+
                       </tr>
-                      @endforeach
+                      <tr>
+                        <td>Patient</td>
+                        <td>{{ $visit->patient_id }}</td>
+
+                      </tr>
+                      <tr>
+                        <td>Date</td>
+                        <td>{{ $visit->date }}</td>
+                      </tr>
+                      <tr>
+                        <td>Time</td>
+                        <td>{{ $visit->time }}</td>
+                      </tr>
+                      <tr>
+                        <td>Duration</td>
+                        <td>{{ $visit->duration }}</td>
+                      </tr>
+                      <tr>
+                        <td>Cost</td>
+                        <td>{{ $visit->cost }}</td>
+                      </tr>
+
                     </tbody>
                   </table>
-                  @endif
+                  <a href="{{ route('patient.visits.index') }}" class="btn btn-default">Back</a>
                 </div>
             </div>
         </div>

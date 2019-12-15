@@ -2,7 +2,7 @@
 # @Author: izzy
 # @Date:   2019-12-06T20:30:37+00:00
 # @Last modified by:   izzy
-# @Last modified time: 2019-12-10T11:29:30+00:00
+# @Last modified time: 2019-12-15T21:07:54+00:00
 
 
 @section('content')
@@ -16,6 +16,10 @@
                 <div class="card-body">
                   <table id="table-patients" class="table table-hover">
                     <tbody>
+                      <tr>
+                        <td>User ID</td>
+                        <td>{{ $patient->user_id }}</td>
+                      </tr>
                       <tr>
                         <td>Name</td>
                         <td>{{ $patient->user->name }}</td>
